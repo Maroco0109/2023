@@ -1,4 +1,4 @@
-//ìµœëŒ€ê³µì•½ìˆ˜ ì•Œê³ ë¦¬ì¦˜( sub, mod, recursion )
+//ÃÖ´ë°ø¾à¼ö ¾Ë°í¸®Áò( sub, mod, recursion )
 #include<iostream>
 
 int gcd_sub(int a, int b) {
