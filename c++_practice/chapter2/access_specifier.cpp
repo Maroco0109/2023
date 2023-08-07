@@ -2,6 +2,7 @@
 #include <iostream>
 
 class PrivateAccessError{
+    int r=1;
 private:
     int a;
     void f();
@@ -29,10 +30,10 @@ void PrivateAccessError::g(){
     b=6;
 }
 int main(){
-    //PrivateAccessError objA;    //PrivateAccessError()´Â privateÀÌ¹Ç·Î È£Ãâ ºÒ°¡
+    //PrivateAccessError objA;    //PrivateAccessError()ëŠ” privateì´ë¯€ë¡œ í˜¸ì¶œ ë¶ˆê°€
     PrivateAccessError objB(100);
-    //objB.a=10;  //a´Â private ¸â¹öÀÌ¹Ç·Î È£Ãâ ºÒ°¡
+    //objB.a=10;  //aëŠ” private ë©¤ë²„ì´ë¯€ë¡œ í˜¸ì¶œ ë¶ˆê°€
     objB.b=20;
-    //objB.f();   //f()´Â private ¸â¹öÀÌ¹Ç·Î È£Ãâ ºÒ°¡
+    //objB.f();   //f()ëŠ” private ë©¤ë²„ì´ë¯€ë¡œ í˜¸ì¶œ ë¶ˆê°€
     objB.g();
 }
