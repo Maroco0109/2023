@@ -40,7 +40,8 @@
         "streambuf": "cpp",
         "typeinfo": "cpp",
         "functional": "cpp",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "cstring": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled",
     "files.encoding": "euckr"
