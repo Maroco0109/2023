@@ -22,45 +22,49 @@ input: 첫째 줄에 N(1 ≤ N ≤ 8)이 주어진다.
 output: N자리 수 중에서 신기한 소수를 오름차순으로 정렬해서 한 줄에 하나씩 출력한다
 신기한 소수: 왼쪽부터 1자리, 2자리, 3자리, 4자리 모두 소수인 수
 ex) 7331: 7, 73, 733, 7331 모두 소수
-
-1. n자리 수 입력
-2, n자리 숫자 부터 queue 형식으로 받음
-3. queue에서 차례대로 pop 하면서 prime check
-4. 다음 숫자 queue에 받음
 ...
+    1. n자리수 입력 받음
+    2. n자리수 숫자는 2,3,5,7 이어야 소수
+    3. n-1 자리수 부터는 1,3,5,7,9 이어야 소수일 가능성O (2,4,6,8,0은 2로 나누어 떨어짐)
+    4. n번만큼 자리수 반복
 */
 
 #include<iostream>
-#include<queue>
+#include<stack>
+#include<vector>
 #include<cmath>
 bool isPrime(int n);
 
 int main(){
     /* 구현 해야 되는것
-    1. n 자리 숫자가 작은 순서대로 queue에 들어옴 -> n 자리 숫자는 1xx... 부터 시작
-    2. queue에 들어온 숫자를 dequeue 하며 isPrime check
-    3. n 자리에 대해 모두 isPrime -> 출력
-    4. 다음 숫자를 queue에 넣음
-    5. 2번으로 돌아가서 반복...
+    1. 소수 판단하는 isPrime 함수
+    2. stack 생성 후 입력받은 숫자의 n자리수 숫자부터 stack으로 받으면서 isPrime
+    3. n번 반복 후 isPrime이 모두 true -> 해당 수 출력
+    함수화? {   // odd_num_not5에 대한 이중 for문?
+        한자리수 추가 될 때, 그 수가 소수 -> 다음 자리수에 odd_num_not5의 0번 index부터 다시
+        한자리수 추가 될 때, 그 수가 소수가 아님 -> 해당 자리수 pop -> 해당 자리수의 다음 index의 odd_num_not5 넣기
+    }
+    for(int i=0; i<4; i++){
+        for(int j=0; j<4; j++){
+            stack.push(i)
+            {   // 소수 판별 과정에서 아래 조건문이 계속 반복됨, j<4 까지
+            if(isPrime)
+                continue;
+            else
+                stack.pop();
+                stack.push(j);
+            }
+        }
+    }
     */
     int n;
-    int element;
-    int res;
     std::cin>>n;
-    std::queue<int> number;
-    for(int i=0; i<n; i++){
-        std::cin>>element;
-        number.push(element);
+    std::stack<int> number;
+    std::vector<int> prime_number = {2,3,5,7};
+    std::vector<int> odd_num_not5 = {1,3,7,9};
+    // n자리수에 2,3,5,7 넣는 반복문
+    
     }
-    res = 0;
-    for(int j=0; j<n; j++){
-        res = res*10 + number.front();
-        if(isPrime(res))    number.pop();
-        else                continue;
-    }
-    std::cout<<res<<'\n';
-
-
     return 0;
 }
 // 소수 구하는 함수
