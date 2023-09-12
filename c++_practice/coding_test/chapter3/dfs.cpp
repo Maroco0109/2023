@@ -31,35 +31,36 @@ ex) 7331: 7, 73, 733, 7331 모두 소수
 */
 
 #include<iostream>
-#include<queue>
+#include<vector>
 #include<cmath>
 bool isPrime(int n);
 
 int main(){
     /* 구현 해야 되는것
-    1. n 자리 숫자가 작은 순서대로 queue에 들어옴 -> n 자리 숫자는 1xx... 부터 시작
-    2. queue에 들어온 숫자를 dequeue 하며 isPrime check
-    3. n 자리에 대해 모두 isPrime -> 출력
-    4. 다음 숫자를 queue에 넣음
-    5. 2번으로 돌아가서 반복...
+    1. n값 입력(n 자리 수)
+    2. 최대 자리 수가 소수인 경우부터 시작
+    3. 다음 자리수가 쌓일 때(push) 합쳐진 수가 소수인지 판별 -> 짝수가 붙으면 무조건 짝수 -> 1,3,5,7,9
+    4. n자리수 까지 반복
+    5. n자리수 까지 반복 시 소수면 출력
+    6. 아닐 시 백트래킹
     */
     int n;
-    int element;
-    int res;
+    int res = 0;
+    bool status = false;
     std::cin>>n;
-    std::queue<int> number;
-    for(int i=0; i<n; i++){
-        std::cin>>element;
-        number.push(element);
+    std::vector<int> stack;
+    std::vector<int> odd_num = {1,3,5,7,9};
+    // #1 starts with 2
+    stack.push_back(2);
+    for(int i=1; i<n; i++){
+        res = res*10 + stack.back();
+        if(isPrime(res)){
+            for(int j=1; j<=9; j+=2){
+                stack.push_back(j);
+            }
+            continue;
+        }
     }
-    res = 0;
-    for(int j=0; j<n; j++){
-        res = res*10 + number.front();
-        if(isPrime(res))    number.pop();
-        else                continue;
-    }
-    std::cout<<res<<'\n';
-
 
     return 0;
 }
