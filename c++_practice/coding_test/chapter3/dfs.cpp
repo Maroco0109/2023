@@ -64,7 +64,7 @@ int main(){
     std::vector<int> odd_num_not5 = {1,3,7,9};
     // n자리수에 2,3,5,7 넣는 반복문
     
-    }
+    
     return 0;
 }
 // 소수 구하는 함수
