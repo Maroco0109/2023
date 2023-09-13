@@ -56,8 +56,7 @@ void DFS(int number, int digit){
         else    return;
     }
     for(int i=1; i<10; i++){
-        if(i%2==0)
-            continue;
+        if(i%2==0)  continue;
         if(isPrime(number*10+i))
             DFS(number*10 + i, digit+1);
     }
