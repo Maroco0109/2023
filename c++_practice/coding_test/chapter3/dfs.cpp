@@ -22,50 +22,45 @@ input: 첫째 줄에 N(1 ≤ N ≤ 8)이 주어진다.
 output: N자리 수 중에서 신기한 소수를 오름차순으로 정렬해서 한 줄에 하나씩 출력한다
 신기한 소수: 왼쪽부터 1자리, 2자리, 3자리, 4자리 모두 소수인 수
 ex) 7331: 7, 73, 733, 7331 모두 소수
+n의 최대값이 8(8자리수) -> DFS 사용해도 시간복잡도 영향 x
 ...
     1. n자리수 입력 받음
     2. n자리수 숫자는 2,3,5,7 이어야 소수
-    3. n-1 자리수 부터는 1,3,5,7,9 이어야 소수일 가능성O (2,4,6,8,0은 2로 나누어 떨어짐)
-    4. n번만큼 자리수 반복
+    3. n-1 자리수 부터는 1,3,7,9 이어야 소수일 가능성O (2,4,6,8,0은 2로 나누어 떨어짐, 5는 5로 나누어 떨어짐) => 현재수 *10 + a
+    4. n번만큼 자리수 반복 -> 재귀 함수 형태로 탐색
 */
 
 #include<iostream>
-#include<stack>
-#include<vector>
 #include<cmath>
 bool isPrime(int n);
+void DFS(int number, int digit);
+
+static int n;
 
 int main(){
-    /* 구현 해야 되는것
-    1. 소수 판단하는 isPrime 함수
-    2. stack 생성 후 입력받은 숫자의 n자리수 숫자부터 stack으로 받으면서 isPrime
-    3. n번 반복 후 isPrime이 모두 true -> 해당 수 출력
-    함수화? {   // odd_num_not5에 대한 이중 for문?
-        한자리수 추가 될 때, 그 수가 소수 -> 다음 자리수에 odd_num_not5의 0번 index부터 다시
-        한자리수 추가 될 때, 그 수가 소수가 아님 -> 해당 자리수 pop -> 해당 자리수의 다음 index의 odd_num_not5 넣기
-    }
-    for(int i=0; i<4; i++){
-        for(int j=0; j<4; j++){
-            stack.push(i)
-            {   // 소수 판별 과정에서 아래 조건문이 계속 반복됨, j<4 까지
-            if(isPrime)
-                continue;
-            else
-                stack.pop();
-                stack.push(j);
-            }
-        }
-    }
-    */
-    int n;
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(NULL);
+    std::cout.tie(NULL);
     std::cin>>n;
-    std::stack<int> number;
-    std::vector<int> prime_number = {2,3,5,7};
-    std::vector<int> odd_num_not5 = {1,3,7,9};
-    // n자리수에 2,3,5,7 넣는 반복문
-    
-    }
+
+    DFS(2,1);
+    DFS(3,1);
+    DFS(5,1);
+    DFS(7,1);
     return 0;
+}
+// DFS 알고리즘
+void DFS(int number, int digit){
+    if(digit == n){
+        if(isPrime(number)) {std::cout<<number<<'\n';}
+        else    return;
+    }
+    for(int i=1; i<10; i++){
+        if(i%2==0)
+            continue;
+        if(isPrime(number*10+i))
+            DFS(number*10 + i, digit+1);
+    }
 }
 // 소수 구하는 함수
 bool isPrime(int n){
