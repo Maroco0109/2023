@@ -68,7 +68,7 @@
         },
         {
             "type": "cppbuild",
-            "label": "C/C++: g++.exe í™œì„± íŒŒì¼ ë¹Œë“œ",
+            "label": "C/C++: g++.exe È°¼º ÆÄÀÏ ºôµå",
             "command": "C:/mingw64/bin/g++.exe",
             "args": [
                 "-fdiagnostics-color=always",
