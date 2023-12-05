@@ -7,6 +7,7 @@
 시간복잡도(노드: v, 에지: e): O(v+e)
 재귀 함수 사용 -> 스택 오버플로우 유의
 => 그래프 완전 탐색, 단절점 찾기, 단절선 찾기, 사이클 찾기, 위상정렬 등
+
 [핵심 이론]
 - 한 번 방문한 노드를 다시 방문X -> 노드 방문 여부를 체크할 배열(인접 리스트)
 - FILO(후입선출) 특성 -> 스택 성질을 같는 재귀함수로 많이 구현
@@ -17,6 +18,19 @@ pop, 탐색 순서에 기록 -> 인접 리스트 -> pop된 노드의 인접 노드를 push(방문 노드�
 3. 스택에 값이 없을 때 까지 반복 -> DFS 종료시까지
 이미 방문한 노드는 방문 배열을 바탕으로 재삽입 하지 않음!
 * 스택에 노드를 삽입할 때 방문 배열 체크, 스택에서 노드를 뺄 때 탐색 순서에 기록, 인접 노드를 방문 배열과 대조
+
+[응용]
+connectd graph에서 cycle 찾기
+- time stamp 계산
+- connected graph, DFS tree 에서 edge 비교 -> DFS tree 에 없는 "back edge" 탐색(cf. tree edge: DFS시 discover 되면서 내려가는 edge)
+- time stamp 를 추적하면서 그릴 때, ancestor node로 돌아가는 node가 존재 시 cycle이 존재함
+
+Toplogical Sorting
+- 유한집합의 pratial order -> linear order 찾기
+- cycle이 존재 x -> DAG(Directed acyclic graph), back edge 존재 x, 방향이 있는 edges
+- linear하게 표현 시, 화살표는 왼쪽에서 오른쪽으로만 표시
+- DAG에서 여러개의 DFS tree 생성: DFS Forest
+- DFE Forest의 finish time을 기준으로 우측부터 적어서 나열
 */
 /* 백준 2023
 input: 첫째 줄에 N(1 ≤ N ≤ 8)이 주어진다.

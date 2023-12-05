@@ -15,6 +15,13 @@
 pop된 노드는 탐색 순서에 저장
 큐에 저장된 인접 노드는 방문배열 값 변경
 3. 큐 자료구조에 값이 없을 때 까지 반복
+
+[응용]
+- connected components
+- shortest paths
+- cycle(in connected graphs)
+    - tree 에서는 cycle이 생기지 않음 -> n 개의 node => n-1 개의 edge
+    - edge의 개수가 node 개수보다 많거나 같다 => cycle 생성 가능
 */
 /* 백준 1167 트리의 지름
 input: 트리 정점의 개수 v -> 1번부터 v번까지 다음 노드 번호, 거리 입력 (추가입력 -1)
